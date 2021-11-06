@@ -20,14 +20,14 @@ class User:
 
     def save_do_db(self, cursor):
         if self._id == -1:
-            sql = "INSERT INTO users(username, hashed_password) VALUES(%s, %s) RETURNING id"
+            sql = "INSERT INTO Users(username, hashed_password) VALUES(%s, %s) RETURNING id"
             values = (self.username, self.hashed_password)
             cursor.execute(sql, values)
             self._id = cursor.fetchone()['id']
 
             return True
         else:
-            sql = """UPDATE Users SET username=%s, hashed_password=%s WHERE id=%s"""
+            sql = "UPDATE Users SET username=%s, hashed_password=%s WHERE id=%s"
             values = (self.username, self.hashed_password, self.id)
             cursor.execute(sql, values)
 
@@ -35,7 +35,7 @@ class User:
 
     @staticmethod
     def load_users_by_username(cursor, username: str) -> User:
-        sql = "SELECT id, username, hashed_password FROM users WHERE username=%s"
+        sql = "SELECT id, username, hashed_password FROM Users WHERE username=%s"
         cursor.execute(sql, (username,))  # (username, ) - cause we need a tuple
         data = cursor.fetchone()
         if data:
