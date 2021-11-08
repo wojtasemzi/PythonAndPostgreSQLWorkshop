@@ -23,7 +23,7 @@ class User:
             sql = "INSERT INTO Users(username, hashed_password) VALUES(%s, %s) RETURNING id"
             values = (self.username, self.hashed_password)
             cursor.execute(sql, values)
-            self._id = cursor.fetchone()['id']
+            self._id = cursor.fetchone()[0]
 
             return True
         else:
