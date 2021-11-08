@@ -1,5 +1,6 @@
-import hashlib
-import random
+from hashlib import sha256
+from random import choice
+from string import ascii_letters
 
 
 def hash_password(password, salt=None):
@@ -30,7 +31,7 @@ def hash_password(password, salt=None):
         salt = salt[:16]
 
     # use sha256 algorithm to generate haintegersh
-    t_sha = hashlib.sha256()
+    t_sha = sha256()
 
     # we have to encode salt & password to utf-8, this is required by the
     # hashlib library.
@@ -79,5 +80,5 @@ def generate_salt():
     for i in range(0, 16):
 
         # get a random element from the iterable
-        salt += random.choice(ALPHABET)  # TODO: it is something from Python or just self defined CONSTANT?
+        salt += choice(ascii_letters)
     return salt
