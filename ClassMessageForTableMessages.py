@@ -13,7 +13,12 @@ class Message:
     def id(self) -> int:
         return self._id
 
-    def save_to_db(self, cursor):
+    def save_to_db(self, cursor) -> bool:
+        '''Save object `Message` to database or updates it.
+        
+        :rtype: bool
+        :return: Returns True when save or updates.
+        '''
         if self._id == -1:
             sql = "INSERT INTO Messages(from_id, to_id, text) VALUES(%s, %s, %s) RETURNING id"
             values = (self.from_id, self.to_id, self.text)
@@ -29,7 +34,12 @@ class Message:
             return True
 
     @staticmethod
-    def load_all_messages(cursor):
+    def load_all_messages(cursor) -> list:
+        '''Loads all messages from table Messages
+
+        :rtype: list of `Message`
+        :return: List of objects `Message` representing rows in table Messages
+        '''
         sql = "SELECT id, from_id, to_id, text, creation_date FROM Messages"
         messages = list()
         cursor.execute(sql)
