@@ -34,7 +34,7 @@ class User:
             return True
 
     @staticmethod
-    def load_users_by_username(cursor, username: str) -> User:
+    def load_users_by_username(cursor, username: str):
         sql = "SELECT id, username, hashed_password FROM Users WHERE username=%s"
         cursor.execute(sql, (username,))  # (username, ) - cause we need a tuple
         data = cursor.fetchone()
@@ -48,7 +48,7 @@ class User:
             return None
 
     @staticmethod
-    def load_users_by_id(cursor, id_: int) -> User:
+    def load_users_by_id(cursor, id_: int):
         sql = "SELECT id, username, hashed_password FROM users WHERE id=%s"
         cursor.execute(sql, (id_,))  # (id_, ) - cause we need a tuple
         data = cursor.fetchone()
