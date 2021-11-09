@@ -1,5 +1,0 @@
-exercises:
-    '1_Konfiguracja bazy danych': { max_points: 0, disabled: true, translations: { en: '1_Database configuration', pl: '1_Konfiguracja bazy danych' } }
-    '2_Obiektowa obsługa bazy danych': { max_points: 0, disabled: true, translations: { en: '2_Object-oriented maintenance of database', pl: '2_Obiektowa obsługa bazy danych' } }
-    '3_Aplikacja do obsługi użytkowników': { max_points: 0, disabled: true, translations: { en: '3_User management application', pl: '3_Aplikacja do obsługi użytkowników' } }
-    '4_Aplikacja do obsługi wiadomości': { max_points: 0, disabled: true, translations: { en: '4_Messaging application', pl: '4_Aplikacja do obsługi wiadomości' } }
