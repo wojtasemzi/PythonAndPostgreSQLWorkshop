@@ -2,7 +2,7 @@ from clcrypto import hash_password
 
 
 class Message:
-    def __init__(self, text: str, from_id: int, to_id: int) -> None:
+    def __init__(self, text="", from_id=-1, to_id=-1):
         self._id = -1
         self.from_id = from_id
         self.to_id = to_id
@@ -23,11 +23,11 @@ class Message:
             sql = "INSERT INTO Messages(from_id, to_id, text) VALUES(%s, %s, %s) RETURNING id"
             values = (self.from_id, self.to_id, self.text)
             cursor.execute(sql, values)
-            self._id = cursor.fetchone()['id']
+            self._id = cursor.fetchone()[0]
 
             return True
         else:
-            sql = """UPDATE Messages SET from_id=%s, to_id=%s, text=%s WHERE id=%s"""
+            sql = "UPDATE Messages SET from_id=%s, to_id=%s, text=%s WHERE id=%s"
             values = (self.from_id, self.to_id, self.text, self.id)
             cursor.execute(sql, values)
 
