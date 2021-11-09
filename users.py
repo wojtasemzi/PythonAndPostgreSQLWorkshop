@@ -2,7 +2,6 @@ import argparse
 
 from functions import connect_to_db
 from functions import create_user, delete_user, edit_user_password, list_users
-from ClassUserForTableUsers import User
 
 parser = argparse.ArgumentParser()
 
